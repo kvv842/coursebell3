@@ -4,7 +4,7 @@
 
 //элементы страницы
 var btAdd = <HTMLInputElement>document.getElementById('vehicleAdd');
-var radio = document.getElementsByName('vehicleType');
+var radios = <NodeList>document.getElementsByName('vehicleType');
 var vehicleName = <HTMLInputElement>document.getElementById('vehicleName');
 var vehicleWeight = <HTMLInputElement>document.getElementById('vehicleWeight');
 var vehicleDescription = <HTMLInputElement>document.getElementById('vehicleDescription');
@@ -85,8 +85,8 @@ interface IVehicleList{
 let vehicles = Array<IVehicleList>();
 
 btAdd.onclick = () => {
-    var type = "Truck";
-    if (type == "") {
+    var type = getValueFromRadioButtons(radios);
+    if (type == null) {
         alert("Выберите тип машины");
         return;
     }
@@ -115,6 +115,20 @@ vehicleList.onchange = () => {
     vehicleDetails.innerHTML = vehicles[vehicleList.selectedIndex].onClick();
 }
 
+let getValueFromRadioButtons = (nodeList: NodeList) => {
+    if (nodeList == null){
+        return null;
+    }
+
+    for (let i = 0; i<nodeList.length; i++){
+        let a:HTMLInputElement  = nodeList.item(i) as HTMLInputElement;
+        if (a.checked) {
+            return a.value;
+        }
+    }
+
+    return null;
+}
 
 //for test****************
 function InitData() {
