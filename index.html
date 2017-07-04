@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<h1>ES6 TypeScript</h1>
+
+<form name="vehicleForm">
+    <input type="radio" name="vehicleType" value="Truck" checked="true"/><label>Грузовая</label><br/>
+    <input type="radio" name="vehicleType" value="Car"/><label>Легковая</label><br/>
+    <label>Название</label><input type="text" id="vehicleName" value=""/><br/>
+    <label>Масса/Скорость</label><input type="number" id="vehicleWeight" value=""/><br/>
+    <label>Примечание</label><input type="text" id="vehicleDescription" value=""/><br/>
+    <input type="button" id="vehicleAdd" value="Добавить"/><br/>
+</form>
+
+<select size="3" id="vehicleList">
+
+</select>
+
+<div id="vehicleDetails">
+
+</div>
+
+
+<script src="./dist/bundle.js"></script>
+</body>
+</html>
