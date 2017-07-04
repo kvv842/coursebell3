@@ -19,9 +19,7 @@ class Vehicle {
     }
 
     // информация для отображения в списке машин
-    showLabel(): string {
-        throw new Error;
-    }
+    showLabel = () => "";
 
     protected showLabelByTemplate(spicifyValue:string, spicifyUnit: string): string {
         return `<option>${this.name}: ${spicifyValue} ${spicifyUnit}</option>`;
@@ -29,9 +27,7 @@ class Vehicle {
 
     // информация для отображения под списком машин,
     // при выборе строки в списке
-    showInfo(): string {
-        throw new Error;
-    }
+    showInfo = () => "";
 
     protected showInfoByTemplate(spicificType:string, spicificName:string, spicificValue:string, spicificUnit: string): string {
         return `Тип: ${spicificType} <br />
@@ -54,15 +50,11 @@ class Truck extends Vehicle {
     }
 
     // информация для отображения в списке машин
-    showLabel(): string {
-        return super.showLabelByTemplate(this.carrying, Truck.SPICIFIC_UNIT);
-    }
+    showLabel = () => super.showLabelByTemplate(this.carrying, Truck.SPICIFIC_UNIT);
 
     // информация для отображения под списком машин,
     // при выборе строки в списке
-    showInfo(): string {
-        return super.showInfoByTemplate(Truck.SPICIFIC_TYPE, Truck.SPICIFIC_NAME, this.carrying, Truck.SPICIFIC_UNIT);
-    }
+    showInfo = () => super.showInfoByTemplate(Truck.SPICIFIC_TYPE, Truck.SPICIFIC_NAME, this.carrying, Truck.SPICIFIC_UNIT);
 }
 
 //Для легковых:
@@ -76,15 +68,12 @@ class Car extends Vehicle {
     }
 
     // информация для отображения в списке машин
-    showLabel(): string {
-        return super.showLabelByTemplate(this.velocity, Car.SPICIFIC_UNIT);
-    }
+    showLabel = () => super.showLabelByTemplate(this.velocity, Car.SPICIFIC_UNIT);
+
 
     // информация для отображения под списком машин,
     // при выборе строки в списке
-    showInfo(): string {
-        return super.showInfoByTemplate(Car.SPICIFIC_TYPE, Car.SPICIFIC_NAME, this.velocity, Car.SPICIFIC_UNIT);
-    }
+    showInfo = () => super.showInfoByTemplate(Car.SPICIFIC_TYPE, Car.SPICIFIC_NAME, this.velocity, Car.SPICIFIC_UNIT);
 }
 
 
@@ -95,7 +84,7 @@ interface IVehicleList{
 }
 let vehicles = Array<IVehicleList>();
 
-btAdd.onclick = function btAdd() {
+btAdd.onclick = () => {
     var type = "Truck";
     if (type == "") {
         alert("Выберите тип машины");
@@ -122,7 +111,7 @@ btAdd.onclick = function btAdd() {
 
 }
 
-vehicleList.onchange = function () {
+vehicleList.onchange = () => {
     vehicleDetails.innerHTML = vehicles[vehicleList.selectedIndex].onClick();
 }
 
